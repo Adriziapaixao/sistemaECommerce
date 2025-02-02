@@ -3,6 +3,7 @@ package com.example.sistemaECommerce.services;
 import com.example.sistemaECommerce.dtos.ClienteDTO;
 import com.example.sistemaECommerce.models.ClienteEntity;
 import com.example.sistemaECommerce.repositories.ClienteRepository;
+import com.example.sistemaECommerce.validations.ClienteValidation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,15 @@ public class ClienteService {
     @Autowired
     private final ClienteRepository clienteRepository;
 
-    public ClienteService(ClienteRepository clienteRepository) {
+    private final ClienteValidation clienteValidation;
+
+    public ClienteService(ClienteRepository clienteRepository, ClienteValidation clienteValidation) {
         this.clienteRepository = clienteRepository;
+        this.clienteValidation = clienteValidation;
     }
 
     public ClienteEntity cadastrarCliente(ClienteDTO clienteDTO) {
+        clienteValidation.validarCadastroCliente(clienteDTO);
         ClienteEntity clienteEntity = new ClienteEntity();
         clienteEntity.setNome(clienteDTO.getName());
         clienteEntity.setCpf(clienteDTO.getCpf());

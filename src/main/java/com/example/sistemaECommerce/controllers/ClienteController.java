@@ -6,6 +6,7 @@ import com.example.sistemaECommerce.repositories.ClienteRepository;
 import com.example.sistemaECommerce.services.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +28,13 @@ public class ClienteController {
     }
 
     @PostMapping
-    public ResponseEntity<ClienteEntity> cadastrarCliente(@Validated @RequestBody ClienteDTO clienteDTO) {
-    ClienteEntity cadastrarClente = clienteService.cadastrarCliente(clienteDTO);
-    return ResponseEntity.ok(cadastrarClente);
+    public ResponseEntity<?> cadastrarCliente(@Valid @RequestBody ClienteDTO clienteDTO) {
+        try {
+            ClienteEntity clienteCadastrado = clienteService.cadastrarCliente(clienteDTO);
+            return ResponseEntity.status(HttpStatus.CREATED).body(clienteCadastrado);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
     }
 
     @GetMapping("/{cpf}")
