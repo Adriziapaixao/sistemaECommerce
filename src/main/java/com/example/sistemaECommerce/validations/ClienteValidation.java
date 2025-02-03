@@ -16,7 +16,7 @@ public class ClienteValidation {
     private ClienteRepository clienteRepository;
 
     @Autowired
-    public void ClienteValidations(ClienteRepository clienteRepository) {
+    public ClienteValidation(ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
     }
 
