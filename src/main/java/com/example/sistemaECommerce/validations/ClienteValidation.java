@@ -26,7 +26,7 @@ public class ClienteValidation {
      * @param clienteDTO Dados do cliente a serem validados.
      */
     public void validarCadastroCliente(ClienteDTO clienteDTO) {
-        validarNome(clienteDTO.getName());
+        validarNome(clienteDTO.getNome());
         validarCpf(clienteDTO.getCpf());
         validarEmail(clienteDTO.getEmail());
         verificarCpfUnico(clienteDTO.getCpf());

@@ -25,7 +25,7 @@ public class ClienteService {
     public ClienteEntity cadastrarCliente(ClienteDTO clienteDTO) {
         clienteValidation.validarCadastroCliente(clienteDTO);
         ClienteEntity clienteEntity = new ClienteEntity();
-        clienteEntity.setNome(clienteDTO.getName());
+        clienteEntity.setNome(clienteDTO.getNome());
         clienteEntity.setCpf(clienteDTO.getCpf());
         clienteEntity.setEmail(clienteDTO.getEmail());
         return clienteRepository.save(clienteEntity);

@@ -10,7 +10,7 @@ import lombok.Data;
 public class ClienteDTO {
 
     @NotBlank(message = "Nome é obrigatório")
-    private String name;
+    private String nome;
 
     @NotBlank(message = "CPF é obrigatório")
     @Pattern(regexp = "^[0-9]{11}$", message = "CPF deve conter 11 dígitos numéricos")
@@ -22,7 +22,7 @@ public class ClienteDTO {
 
     public ClienteEntity toEntity() {
         ClienteEntity clienteEntity = new ClienteEntity();
-        clienteEntity.setNome(this.name);
+        clienteEntity.setNome(this.nome);
         clienteEntity.setCpf(this.cpf);
         clienteEntity.setEmail(this.email);
         return clienteEntity;
