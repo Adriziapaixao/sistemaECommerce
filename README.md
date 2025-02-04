@@ -22,22 +22,25 @@ cadastro de produtos, clientes e a realização de compras
 - **Request Body**:
   ```json
   {
-    "nome": "João da Silva",
-    "cpf": "12345678901",
-    "email": "joao.silva@example.com"
+    "nome": "ana claudia",
+	"cpf": "43839730007",
+	"email": "anaccc@mail.com.br"
   }
-
+  ```
 Response:
 Status 200 (OK):
 
-    {
+  ```json
+  {
     "id": 1,
-    "nome": "João da Silva",
-    "cpf": "12345678901",
-    "email": "joao.silva@example.com"
-    }
-
+    "nome": "ana claudia",
+    "cpf": "43839730007",
+    "email": "anaccc@mail.com.br"
+  }
+  ```
 Response: Status 400 (Bad Request): Dados inválidos.
+
+**OBSERVAÇÂO**: **_O CPF precisa ser válido, então utilize um criador de cpf online._**
 
 ### ** Consultar Cliente por CPF **
 **GET** `/clientes/{cpf}`
